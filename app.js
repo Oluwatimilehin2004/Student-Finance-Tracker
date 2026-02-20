@@ -226,15 +226,44 @@
             dashboard.renderRecent();
         },
 
+        // 🔥 FIXED: Now searches ALL transactions with regex, then shows top 5
         renderRecent: () => {
             if (!elements.transactionsList) return;
             
-            const recent = [...state.transactions]
+            // Get search and filter values
+            const searchTerm = elements.search ? elements.search.value : '';
+            const category = elements.categoryFilter ? elements.categoryFilter.value : 'all';
+            
+            // Filter ALL transactions using the same filter function as transactions page
+            let filtered = [...state.transactions];
+            
+            // Apply category filter
+            if (category && category !== 'all') {
+                filtered = filtered.filter(t => t.category === category);
+            }
+            
+            // Apply regex search to ALL transactions
+            if (searchTerm) {
+                try {
+                    const regex = new RegExp(searchTerm, 'i');
+                    filtered = filtered.filter(t => 
+                        regex.test(t.description) || 
+                        regex.test(t.category) || 
+                        regex.test(String(t.amount))
+                    );
+                    console.log(`Dashboard search: "${searchTerm}" found ${filtered.length} transactions`);
+                } catch (e) {
+                    console.log('Invalid regex pattern');
+                }
+            }
+            
+            // Sort by date (newest first) and take only the 5 most recent
+            const recent = filtered
                 .sort((a, b) => new Date(b.date) - new Date(a.date))
                 .slice(0, 5);
             
             if (recent.length === 0) {
-                elements.transactionsList.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 30px;">No transactions yet</td></tr>';
+                elements.transactionsList.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 30px;">No transactions match your search</td></tr>';
                 return;
             }
 
@@ -243,7 +272,7 @@
                 return `
                     <tr>
                         <td>${utils.formatDate(t.date)}</td>
-                        <td>${t.description}</td>
+                        <td>${utils.highlightText(t.description, searchTerm)}</td>
                         <td><span class="category-badge">${t.category}</span></td>
                         <td class="${amountClass}">${utils.formatCurrency(Math.abs(t.amount))}</td>
                         <td class="actions">
@@ -257,6 +286,13 @@
                     </tr>
                 `;
             }).join('');
+
+            // Update category filter options
+            const categories = [...new Set(state.transactions.map(t => t.category))];
+            if (elements.categoryFilter) {
+                elements.categoryFilter.innerHTML = '<option value="all">All Categories</option>' + 
+                    categories.map(c => `<option value="${c}">${c}</option>`).join('');
+            }
         }
     };
 
@@ -428,7 +464,7 @@
                 message = `📈 ${percentage.toFixed(1)}% used. ${utils.formatCurrency(remaining)} left.`;
                 icon = '📈';
             } else {
-                message = ` ${utils.formatCurrency(remaining)} remaining of ${utils.formatCurrency(cap)}.`;
+                message = `✅ ${utils.formatCurrency(remaining)} remaining of ${utils.formatCurrency(cap)}.`;
                 icon = '✅';
             }
             
@@ -672,31 +708,23 @@
     }
 
     // ========== TEST CURRENCY FUNCTION ==========
-    // Add this function INSIDE your IIFE
     function testCurrencies() {
         console.log('=== TESTING ALL 3 CURRENCIES ===');
         console.log('Current exchange rates:', state.settings.exchangeRates);
         
-        // Save current currency
         const originalCurrency = state.settings.currency;
-        
-        // Test with a sample amount
         const testAmount = 1234.56;
         console.log('Test amount (USD):', testAmount);
         
-        // Test USD
         state.settings.currency = 'USD';
         console.log('USD:', utils.formatCurrency(testAmount));
         
-        // Test EUR
         state.settings.currency = 'EUR';
         console.log('EUR:', utils.formatCurrency(testAmount));
         
-        // Test RWF
         state.settings.currency = 'RWF';
         console.log('RWF:', utils.formatCurrency(testAmount));
         
-        // Restore
         state.settings.currency = originalCurrency;
         console.log('=== TEST COMPLETE ===');
     }
@@ -729,7 +757,6 @@
         }
 
         // ========== TEST CURRENCY CONVERSION ==========
-        // Call the test function here
         testCurrencies();
 
         // ========== EVENT LISTENERS ==========
@@ -776,18 +803,24 @@
             });
         }
 
-        // Search
+        // 🔥 FIXED: Search on dashboard now searches ALL transactions
         if (elements.search) {
-            elements.search.addEventListener('input', () => dashboard.renderRecent());
+            elements.search.addEventListener('input', () => {
+                dashboard.renderRecent(); // Now searches ALL transactions
+            });
         }
+        
         if (elements.searchAll) {
             elements.searchAll.addEventListener('input', () => transactions.renderAll());
         }
 
-        // Category filters
+        // 🔥 FIXED: Category filter on dashboard now filters ALL transactions
         if (elements.categoryFilter) {
-            elements.categoryFilter.addEventListener('change', () => dashboard.renderRecent());
+            elements.categoryFilter.addEventListener('change', () => {
+                dashboard.renderRecent(); // Now filters ALL transactions
+            });
         }
+        
         if (elements.categoryFilterAll) {
             elements.categoryFilterAll.addEventListener('change', () => transactions.renderAll());
         }
