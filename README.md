@@ -55,7 +55,9 @@ A powerful, privacy-first financial tracking application designed specifically f
 
 ## Live Demo
 
-[View Live Demo](https://youtu.be/VrucgA53GUU?si=9LmPbWLs7ExZHX5u)
+[Click here to watch the demo video](https://youtu.be/VrucgA53GUU?si=9LmPbWLs7ExZHX5u)
+
+Or watch directly: https://youtu.be/VrucgA53GUU?si=9LmPbWLs7ExZHX5u
 
 ---
 
