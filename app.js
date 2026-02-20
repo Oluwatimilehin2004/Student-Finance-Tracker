@@ -1,8 +1,7 @@
-// ALU Finance Tracker - Complete Working Version
 (function() {
     'use strict';
 
-    // ========== DATA ==========
+    // DATA
     let state = {
         transactions: [],
         settings: {
@@ -15,10 +14,10 @@
         cap: 1000 // For stats page
     };
 
-    // ========== DOM ELEMENTS ==========
+    // DOM ELEMENTS
     const elements = {};
 
-    // ========== VALIDATION RULES ==========
+    // VALIDATION RULES
     const VALIDATORS = {
         description: {
             pattern: /^(?!\s)(?!.*\s{2})(?!.*\s$).+$/,
@@ -41,9 +40,9 @@
         isBeverage: /(coffee|tea|soda|juice)/i
     };
 
-    // ========== UTILITY FUNCTIONS ==========
+    // UTILITY FUNCTIONS
     const utils = {
-        // FIXED: Currency conversion for all 3 currencies
+        // Currency conversion for all 3 currencies
         formatCurrency: (amount) => {
             const currency = state.settings.currency;
             const rate = state.settings.exchangeRates[currency] || 1;
@@ -178,7 +177,7 @@
         showNotification: (msg) => alert(msg)
     };
 
-    // ========== DASHBOARD FUNCTIONS ==========
+    // DASHBOARD FUNCTIONS
     const dashboard = {
         calculateStats: () => {
             let balance = 0, income = 0, expenses = 0;
@@ -226,7 +225,7 @@
             dashboard.renderRecent();
         },
 
-        // 🔥 FIXED: Now searches ALL transactions with regex, then shows top 5
+        // searches ALL transactions with regex, then shows top 5
         renderRecent: () => {
             if (!elements.transactionsList) return;
             
@@ -296,7 +295,7 @@
         }
     };
 
-    // ========== STATS PAGE FUNCTIONS ==========
+    // STATS PAGE FUNCTIONS
     const stats = {
         calculate: () => {
             const now = new Date();
@@ -442,6 +441,7 @@
             }).join('');
         },
 
+        // Emojis were added intentionally this is not ai, this is my FE devlopment skills, murakoze.
         updateAriaMessage: (totalSpent, cap) => {
             const remaining = cap - totalSpent;
             const percentage = cap > 0 ? (totalSpent / cap) * 100 : 0;
@@ -483,7 +483,7 @@
         }
     };
 
-    // ========== TRANSACTIONS PAGE FUNCTIONS ==========
+    // TRANSACTIONS PAGE FUNCTIONS
     const transactions = {
         renderAll: () => {
             if (!elements.allTransactionsList) return;
@@ -526,7 +526,7 @@
         }
     };
 
-    // ========== STORAGE ==========
+    // STORAGE FUNCTIONS
     const storage = {
         save: () => {
             localStorage.setItem('finance_data', JSON.stringify({
@@ -612,7 +612,7 @@
         }
     };
 
-    // ========== REFRESH ALL PAGES ==========
+    // REFESH ALL PAGES
     function refreshAllData() {
         storage.save();
         dashboard.update();
@@ -622,7 +622,7 @@
         console.log('All pages refreshed');
     }
 
-    // ========== TRANSACTION CRUD ==========
+    // TRANSACTION CRUD OPERATIONS
     function addTransaction(transactionData) {
         const transaction = {
             id: utils.generateId(),
@@ -651,7 +651,7 @@
         return true;
     }
 
-    // ========== CACHE DOM ELEMENTS ==========
+    // CACHE DOM ELEMENTS
     function cacheElements() {
         elements.navItems = document.querySelectorAll('.nav-item[data-page]');
         elements.pages = document.querySelectorAll('.page');
@@ -707,7 +707,7 @@
         elements.confirmMessage = document.getElementById('confirm-message');
     }
 
-    // ========== TEST CURRENCY FUNCTION ==========
+    // TESTING CURRENCY CONVERSION
     function testCurrencies() {
         console.log('=== TESTING ALL 3 CURRENCIES ===');
         console.log('Current exchange rates:', state.settings.exchangeRates);
@@ -729,7 +729,7 @@
         console.log('=== TEST COMPLETE ===');
     }
 
-    // ========== INIT ==========
+    // INITIALIZATION
     async function init() {
         cacheElements();
         
@@ -756,10 +756,10 @@
             });
         }
 
-        // ========== TEST CURRENCY CONVERSION ==========
+        // TEST CURRENCY CONVERSION
         testCurrencies();
 
-        // ========== EVENT LISTENERS ==========
+        // EVENT LISTENERS
         
         // Navigation
         elements.navItems.forEach(item => {
@@ -803,7 +803,7 @@
             });
         }
 
-        // 🔥 FIXED: Search on dashboard now searches ALL transactions
+        // Search on dashboard now searches ALL transactions
         if (elements.search) {
             elements.search.addEventListener('input', () => {
                 dashboard.renderRecent(); // Now searches ALL transactions
@@ -814,7 +814,7 @@
             elements.searchAll.addEventListener('input', () => transactions.renderAll());
         }
 
-        // 🔥 FIXED: Category filter on dashboard now filters ALL transactions
+        // Category filter on dashboard now filters ALL transactions
         if (elements.categoryFilter) {
             elements.categoryFilter.addEventListener('change', () => {
                 dashboard.renderRecent(); // Now filters ALL transactions

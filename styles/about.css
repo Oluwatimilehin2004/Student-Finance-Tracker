@@ -670,9 +670,8 @@ body.dark {
     height: 24px;
 }
 
-/* ============================================
-   CTA SECTION
-   ============================================ */
+ /* CTA SECTION */
+   
 .cta-section {
     padding: 4rem 1rem;
     background: var(--gradient-secondary);
@@ -725,9 +724,9 @@ body.dark {
     font-size: 0.9rem;
 }
 
-/* ============================================
-   FOOTER
-   ============================================ */
+
+   /* FOOTER */
+   
 .footer {
     background: var(--bg-white);
     border-top: 1px solid var(--border);
@@ -802,9 +801,9 @@ body.dark {
     50% { transform: scale(1.2); }
 }
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
+
+   /* RESPONSIVE DESIGN */
+  
 @media (max-width: 1024px) {
     .bento-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -899,9 +898,9 @@ body.dark {
     }
 }
 
-/* ============================================
-   ANIMATIONS
-   ============================================ */
+
+   /* ANIMATIONS */
+  
 @keyframes slideIn {
     from {
         opacity: 0;
@@ -913,9 +912,8 @@ body.dark {
     }
 }
 
-/* ============================================
-   PRINT STYLES
-   ============================================ */
+   /* PRINT STYLES */
+
 @media print {
     .floating-nav,
     .hero-cta,
