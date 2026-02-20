@@ -428,7 +428,7 @@
                 message = `📈 ${percentage.toFixed(1)}% used. ${utils.formatCurrency(remaining)} left.`;
                 icon = '📈';
             } else {
-                message = `✅ ${utils.formatCurrency(remaining)} remaining of ${utils.formatCurrency(cap)}.`;
+                message = ` ${utils.formatCurrency(remaining)} remaining of ${utils.formatCurrency(cap)}.`;
                 icon = '✅';
             }
             
