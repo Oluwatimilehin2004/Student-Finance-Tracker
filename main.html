@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ALU Finance Tracker - Smart financial management for ALU students. Track expenses, set budgets, and achieve financial goals with privacy-first technology.">
+    <meta name="theme-color" content="#6EC1E4">
+    <meta property="og:title" content="ALU Finance Tracker">
+    <meta property="og:description" content="Smart student financial management made simple">
+    <meta property="og:type" content="website">
+    <title>ALU Finance Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Actor&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    <link rel="stylesheet" href="styles/style.css">      
+</head>
+<body>
+    <div class="app">
+        <!-- Simple Sidebar with Visible Labels -->
+        <div class="sidebar">
+            <a href="index.html">
+                <div class="logo" role="img" aria-label="ALU Finance Tracker Logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <rect x="4" y="2" width="16" height="20" rx="2"/>
+                        <line x1="8" y1="6" x2="16" y2="6"/>
+                        <line x1="8" y1="10" x2="16" y2="10"/>
+                        <line x1="8" y1="14" x2="12" y2="14"/>
+                        <circle cx="15" cy="14" r="1"/>
+                        <circle cx="15" cy="18" r="1"/>
+                    </svg>
+                </div>
+            </a>
+            
+            <!-- Navigation Icons with Labels - All White and Relatable -->
+            
+            <!-- Dashboard - Home/Dashboard Icon -->
+            <div class="nav-item active" data-page="dashboard" role="link" tabindex="0">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+                <span class="nav-label">Dashboard</span>
+            </div>
+            
+            <!-- Transactions - Money/Currency Exchange Icon -->
+            <div class="nav-item" data-page="transactions" role="link" tabindex="0">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 6v12"/>
+                    <path d="M8 8h8M8 16h8"/>
+                    <path d="M16 10l-4-4-4 4M16 14l-4 4-4-4"/>
+                </svg>
+                <span class="nav-label">Transactions</span>
+            </div>
+            
+            <!-- Statistics - Chart/Graph Icon -->
+            <div class="nav-item" data-page="stats" role="link" tabindex="0">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+                    <path d="M21 12v-2a5 5 0 0 0-5-5H8a5 5 0 0 0-5 5v2"/>
+                    <circle cx="12" cy="16" r="5"/>
+                    <path d="M12 11v5"/>
+                    <line x1="4" y1="20" x2="20" y2="20"/>
+                    <line x1="4" y1="8" x2="4" y2="12"/>
+                    <line x1="20" y1="8" x2="20" y2="12"/>
+                </svg>
+                <span class="nav-label">Statistics</span>
+            </div>
+            
+            <!-- Settings - Gear/Cog Icon -->
+            <div class="nav-item" data-page="settings" role="link" tabindex="0">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H5.78a1.65 1.65 0 0 0-1.51 1 1.65 1.65 0 0 0 .33 1.82l.04.04A10 10 0 0 0 12 17.66a10 10 0 0 0 6.36-2.62z"/>
+                    <line x1="12" y1="2" x2="12" y2="4"/>
+                    <line x1="12" y1="20" x2="12" y2="22"/>
+                    <line x1="20" y1="12" x2="22" y2="12"/>
+                    <line x1="2" y1="12" x2="4" y2="12"/>
+                </svg>
+                <span class="nav-label">Settings</span>
+            </div>
+
+            <!-- Theme Toggle - Moon/Sun Icon -->
+            <div class="nav-item theme-toggle" id="theme-toggle" role="button" tabindex="0" aria-label="Toggle dark mode">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="theme-icon" aria-hidden="true" focusable="false">
+                    <!-- Moon icon for light mode (default) -->
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+                <span class="nav-label">Theme</span>
+            </div>
+
+            <div class="user" role="img" aria-label="User avatar">AS</div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main">
+            <!-- Header -->
+            <div class="header">
+                <div>
+                    <h1 id="page-title">Dashboard</h1>
+                    <div class="date" id="current-date"></div>
+                </div>
+                <button class="add-btn" id="add-transaction" aria-label="Add new transaction">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true" focusable="false">
+                        <line x1="12" y1="5" x2="12" y2="19"/>
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                    </svg>
+                    Add Transaction
+                </button>
+            </div>
+
+            <!-- Dashboard Page -->
+            <div id="dashboard-page" class="page">
+                <!-- Stats -->
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-label">Balance</div>
+                        <div class="stat-value" id="balance">$0.00</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Income</div>
+                        <div class="stat-value positive" id="income">$0.00</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Expenses</div>
+                        <div class="stat-value negative" id="expenses">$0.00</div>
+                    </div>
+                </div>
+
+                <!-- Budget Progress -->
+                <div class="budget-section">
+                    <div class="budget-header">
+                        <span class="budget-title">Monthly Budget</span>
+                        <span class="budget-amount" id="budget-spent">$0</span>
+                    </div>
+                    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Budget progress">
+                        <div class="progress-fill" id="budget-progress" style="width: 0%"></div>
+                    </div>
+                    <div class="budget-details">
+                        <span>Spent: <span id="spent-amount">$0</span></span>
+                        <span>Remaining: <span id="remaining-amount">$1000</span></span>
+                    </div>
+                </div>
+
+                <!-- Recent Transactions -->
+                <div class="transactions-header">
+                    <h2>Recent Transactions</h2>
+                    <div class="filters">
+                        <input type="text" class="search-input" id="search" placeholder="Search (regex)..." aria-label="Search transactions with regular expression">
+                        <select class="filter-select" id="category-filter" aria-label="Filter by category">
+                            <option value="all">All Categories</option>
+                        </select>
+                    </div>
+                </div>
+
+                <table id="transactions-table" aria-label="Recent transactions">
+                    <thead>
+                        <tr>
+                            <th onclick="app.sort('date')" role="button" tabindex="0" aria-label="Sort by date">
+                                Date 
+                                <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                    <polyline points="6 9 12 15 18 9" stroke="currentColor" fill="none"/>
+                                </svg>
+                            </th>
+                            <th onclick="app.sort('description')" role="button" tabindex="0" aria-label="Sort by description">Description</th>
+                            <th onclick="app.sort('category')" role="button" tabindex="0" aria-label="Sort by category">Category</th>
+                            <th onclick="app.sort('amount')" role="button" tabindex="0" aria-label="Sort by amount">Amount</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactions-list"></tbody>
+                </table>
+            </div>
+
+            <!-- Transactions Page -->
+            <div id="transactions-page" class="page" style="display: none;">
+                <h2 style="margin-bottom: 20px; color: var(--text-primary);">All Transactions</h2>
+                <div class="transactions-header">
+                    <div></div>
+                    <div class="filters">
+                        <input type="text" class="search-input" id="search-all" placeholder="Search..." aria-label="Search all transactions">
+                        <select class="filter-select" id="category-filter-all" aria-label="Filter all transactions by category">
+                            <option value="all">All Categories</option>
+                        </select>
+                    </div>
+                </div>
+                <table aria-label="All transactions">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="all-transactions-list"></tbody>
+                </table>
+            </div>
+
+            <!-- Stats Page -->
+            <div id="stats-page" class="page" style="display: none;">
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">Total Records</div>
+                        <div class="stat-value" id="totalRecords">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Total Spent</div>
+                        <div class="stat-value" id="totalSpent">$0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Top Category</div>
+                        <div class="stat-value" id="topCategory">-</div>
+                    </div>
+                </div>
+
+                <!-- Last 7 Days Trend Chart -->
+                <div class="chart-section">
+                    <div class="chart-header">
+                        <h3>📈 Last 7 Days Trend</h3>
+                        <span class="stat-unit">vs previous week</span>
+                    </div>
+                    <div class="chart-container" role="img" aria-label="Bar chart showing spending trend for the last 7 days">
+                        <div class="bar-chart" id="barChart"></div>
+                    </div>
+                </div>
+
+                <!-- Cap/Target Section -->
+                <div class="cap-section">
+                    <div class="cap-header">
+                        <h3>🎯 Monthly Spending Cap</h3>
+                        <div class="cap-control">
+                            <div class="cap-input">
+                                <label for="capAmount">Set cap:</label>
+                                <input type="number" id="capAmount" value="1000" min="0" step="100" aria-label="Monthly spending cap amount">
+                                <button id="updateCap" aria-label="Update spending cap">Update</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="progress-container">
+                        <div class="progress-info">
+                            <span class="progress-label">Current spending: <span id="currentSpending">$0</span></span>
+                            <span class="progress-value" id="progressPercentage">0%</span>
+                        </div>
+                        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Spending cap progress">
+                            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <!-- ARIA Live Region -->
+                    <div class="aria-live-region" id="ariaLiveRegion" aria-live="polite" aria-atomic="true">
+                        <div class="live-message">
+                            <div class="live-icon" id="liveIcon" role="img" aria-label="Status icon">💰</div>
+                            <div class="live-text" id="liveMessage">Set a spending cap to track your budget</div>
+                            <div class="live-status" id="liveStatus"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div id="settings-page" class="page" style="display: none;">
+                <h2 style="margin-bottom: 20px; color: var(--text-primary);">Settings</h2>
+                
+                <div class="budget-section">
+                    <h3 style="margin-bottom: 15px;">Currency</h3>
+                    <select id="currency-select" class="filter-select" style="width: 200px;" aria-label="Select primary currency">
+                        <option value="USD">USD ($)</option>
+                        <option value="EUR">EUR (€)</option>
+                        <option value="RWF">RWF (Frw)</option>
+                    </select>
+                </div>
+
+                <div class="budget-section">
+                    <h3 style="margin-bottom: 15px;">Budget</h3>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span>Monthly Cap:</span>
+                        <input type="number" id="budget-cap" value="1000" step="100" aria-label="Monthly budget cap"
+                               style="padding: 8px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-white); color: var(--text-primary);">
+                    </div>
+                </div>
+
+                <div class="budget-section">
+                    <h3 style="margin-bottom: 15px;">Exchange Rates</h3>
+                    <div id="exchange-rates" aria-label="Exchange rate settings"></div>
+                </div>
+
+                <div class="budget-section">
+                    <h3 style="margin-bottom: 15px;">Data Management</h3>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button class="btn btn-secondary" id="export-json" aria-label="Export data as JSON">
+                            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7 10 12 15 17 10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                            Export JSON
+                        </button>
+                        <button class="btn btn-secondary" id="export-csv" aria-label="Export data as CSV">
+                            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7 10 12 15 17 10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                            Export CSV
+                        </button>
+                        <label class="btn btn-secondary" style="cursor: pointer;" aria-label="Import JSON file">
+                            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
+                            Import JSON
+                            <input type="file" id="import-file" accept=".json" style="display: none;">
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Modal -->
+    <div class="modal" id="transaction-modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+        <div class="modal-content">
+            <h2 id="modal-title">Add Transaction</h2>
+            <form id="transaction-form">
+                <div class="form-group">
+                    <label id="type-label">Transaction Type</label>
+                    <div class="radio-group" role="radiogroup" aria-labelledby="type-label">
+                        <label>
+                            <input type="radio" name="type" value="expense" checked> Expense
+                        </label>
+                        <label>
+                            <input type="radio" name="type" value="income"> Income
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" name="amount" step="0.01" min="0" required aria-describedby="amount-error">
+                    <div class="error-message" id="amount-error" role="alert"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" id="description" name="description" required aria-describedby="description-error">
+                    <div class="error-message" id="description-error" role="alert"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" name="category" required aria-describedby="category-error">
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Bills">Bills</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <div class="error-message" id="category-error" role="alert"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="date" required aria-describedby="date-error">
+                    <div class="error-message" id="date-error" role="alert"></div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="cancel-modal" aria-label="Cancel">Cancel</button>
+                    <button type="submit" class="btn btn-primary" aria-label="Save transaction">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Confirm Modal -->
+    <div class="modal" id="confirm-modal" role="dialog" aria-labelledby="confirm-title" aria-modal="true">
+        <div class="modal-content">
+            <h2 id="confirm-title">Confirm</h2>
+            <p id="confirm-message" style="margin: 20px 0; color: var(--text-primary);">Are you sure?</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="confirm-no" aria-label="No, cancel">No</button>
+                <button class="btn btn-danger" id="confirm-yes" aria-label="Yes, confirm">Yes</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
