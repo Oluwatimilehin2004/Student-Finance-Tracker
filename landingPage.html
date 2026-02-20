@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ALU Finance Tracker - Smart financial management for ALU students. Track expenses, set budgets, and achieve financial goals with privacy-first technology.">
+    <meta name="theme-color" content="#D00D2D">
+    <meta property="og:title" content="ALU Finance Tracker">
+    <meta property="og:description" content="Smart student financial management made simple">
+    <meta property="og:type" content="website">
+    <title>ALU Finance Tracker | About</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Urbanist:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="stylesheet" href="styles/about.css">
+</head>
+<body>
+    <!-- Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav class="floating-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="landingPage.html" class="nav-logo" aria-label="ALU Finance Tracker Home">
+                <svg class="logo-mark" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="25" cy="25" r="23" stroke="url(#logoGradient)" stroke-width="2.5"/>
+                    <path d="M25 10 L25 40 M15 20 L25 15 L35 20 M15 30 L25 25 L35 30" stroke="url(#logoGradient)" stroke-width="2.5" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#D00D2D"/>
+                            <stop offset="100%" stop-color="#a00a24"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="logo-text">
+                    <span class="logo-main">ALU Finance</span>
+                    <span class="logo-sub">Tracker</span>
+                </span>
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="landingPage.html" class="nav-link active">About</a>
+                <a href="index.html" class="nav-button">
+                    <span>Launch App</span>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-background">
+                <div class="floating-shape shape-1"></div>
+                <div class="floating-shape shape-2"></div>
+                <div class="floating-shape shape-3"></div>
+            </div>
+            
+            <div class="hero-content">
+                <span class="hero-badge">
+                    <svg class="sparkle-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/>
+                    </svg>
+                    <span>Built by ALU Students</span>
+                </span>
+                
+                <h1 class="hero-title">
+                    Take Control of Your
+                    <span class="gradient-text">Financial Future</span>
+                </h1>
+                
+                <p class="hero-description">
+                    A powerful, privacy-first financial tracker designed specifically for ALU students. 
+                    No sign-up, no tracking, just smart financial tools at your fingertips.
+                </p>
+                
+                <div class="hero-cta">
+                    <a href="index.html" class="btn btn-primary btn-large">
+                        <span>Start Tracking Free</span>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="#features" class="btn btn-outline">
+                        <span>Explore Features</span>
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">100%</span>
+                        <span class="hero-stat-label">Privacy First</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">∞</span>
+                        <span class="hero-stat-label">Unlimited</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">24/7</span>
+                        <span class="hero-stat-label">Local Access</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="bento-section" id="features">
+            <div class="bento-header">
+                <h2 class="section-title">Everything You Need in <span class="gradient-text">One Place</span></h2>
+                <p class="section-description">Designed for students, built with love, and completely free.</p>
+            </div>
+            
+            <div class="bento-grid">
+                <!-- Multi-Currency Card -->
+                <div class="bento-card bento-card-large" data-animate style="--delay: 0.1s">
+                    <div class="bento-icon blue-glow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v12M8 8h8M8 16h8"/>
+                        </svg>
+                    </div>
+                    <h3>Multi-Currency Support</h3>
+                    <p>Handle RWF, USD, EUR, and custom currencies with real-time conversion rates.</p>
+                    <div class="bento-features">
+                        <span class="bento-feature">RWF</span>
+                        <span class="bento-feature">USD</span>
+                        <span class="bento-feature">EUR</span>
+                        <span class="bento-feature">Custom</span>
+                    </div>
+                </div>
+
+                <!-- Smart Search Card -->
+                <div class="bento-card bento-card-medium" data-animate style="--delay: 0.2s">
+                    <div class="bento-icon green-glow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="M21 21l-4.3-4.3"/>
+                        </svg>
+                    </div>
+                    <h3>Regex Search</h3>
+                    <p>Advanced search with regular expressions for power users.</p>
+                </div>
+
+                <!-- Analytics Card -->
+                <div class="bento-card bento-card-medium" data-animate style="--delay: 0.3s">
+                    <div class="bento-icon purple-glow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 12v-2a5 5 0 0 0-5-5H8a5 5 0 0 0-5 5v2"/>
+                            <circle cx="12" cy="16" r="5"/>
+                            <line x1="12" y1="11" x2="12" y2="16"/>
+                        </svg>
+                    </div>
+                    <h3>Visual Analytics</h3>
+                    <p>Beautiful charts and insights to understand your spending patterns.</p>
+                </div>
+
+                <!-- Import/Export Card -->
+                <div class="bento-card bento-card-wide" data-animate style="--delay: 0.4s">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div class="bento-icon orange-glow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7 10 12 15 17 10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Import & Export</h3>
+                            <p>JSON and CSV support. Your data is yours to keep.</p>
+                        </div>
+                    </div>
+                    <div class="format-badges">
+                        <span class="format-badge">JSON</span>
+                        <span class="format-badge">CSV</span>
+                    </div>
+                </div>
+
+                <!-- Budget Alerts Card -->
+                <div class="bento-card bento-card-tall" data-animate style="--delay: 0.5s">
+                    <div class="bento-icon red-glow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2v20M2 12h20"/>
+                            <circle cx="12" cy="12" r="10"/>
+                        </svg>
+                    </div>
+                    <h3>Budget Alerts</h3>
+                    <p>Set limits and get notified before you overspend.</p>
+                    <div class="alert-demo">
+                        <div class="progress-bar-container">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                        <span class="progress-text">75% of monthly budget</span>
+                    </div>
+                </div>
+
+                <!-- GitHub Card -->
+                <div class="bento-card bento-card-large" data-animate style="--delay: 0.6s">
+                    <div class="github-header">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+                            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                        </svg>
+                        <div>
+                            <h3>Open Source</h3>
+                            <p>Contribute on GitHub</p>
+                        </div>
+                    </div>
+                    <a href="https://github.com/Oluwatimilehin2004/alu-finance-tracker" target="_blank" rel="noopener" class="github-link">
+                        <span>View Repository</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32">
+                            <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Built With Card -->
+                <div class="bento-card bento-card-medium" data-animate style="--delay: 0.7s">
+                    <div class="tech-stack">
+                        <span class="tech-badge">Vanilla JS</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">HTML5</span>
+                    </div>
+                    <p class="tech-note">No frameworks, just modern web standards.</p>
+                </div>
+
+                <!-- Contact Card -->
+                <div class="bento-card bento-card-wide" data-animate style="--delay: 0.8s">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-grid">
+                        <a href="mailto:student@alustudent.com" class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            <span>Email</span>
+                        </a>
+                        <a href="https://github.com/Oluwatimilehin2004" target="_blank" class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                            </svg>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-container">
+                <h2 class="cta-title">Ready to take control?</h2>
+                <p class="cta-description">Join hundreds of ALU students already managing their finances smarter.</p>
+                <a href="index.html" class="btn btn-primary btn-large">
+                    <span>Launch App Now</span>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <p class="cta-note">No sign-up required • 100% free • Works offline</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <svg class="footer-logo" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="25" cy="25" r="23" stroke="url(#footerGradient)" stroke-width="2"/>
+                        <path d="M25 10 L25 40 M15 20 L25 15 L35 20 M15 30 L25 25 L35 30" stroke="url(#footerGradient)" stroke-width="2" stroke-linecap="round"/>
+                        <defs>
+                            <linearGradient id="footerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#D00D2D"/>
+                                <stop offset="100%" stop-color="#a00a24"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <span class="footer-brand-text">ALU Finance Tracker</span>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Privacy</a>
+                    <span class="footer-divider">•</span>
+                    <a href="#" class="footer-link">Terms</a>
+                    <span class="footer-divider">•</span>
+                    <a href="https://github.com/Oluwatimilehin2004" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+                </div>
+                
+                <p class="footer-copyright">
+                    © 2026 Built by Papa for ALU Students with 
+                    <span class="heart">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                    </span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        if (mobileToggle && navLinks) {
+            mobileToggle.addEventListener('click', () => {
+                const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+                mobileToggle.setAttribute('aria-expanded', !isExpanded);
+                navLinks.classList.toggle('active');
+                mobileToggle.classList.toggle('active');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.nav-container')) {
+                    navLinks.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                    mobileToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1509 @@
+/* Font imports are already in your head, now apply them in CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.3s, color 0.2s, border-color 0.2s;
+}
+
+/* Base body text - Poppins */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-primary);
+    height: 100vh;
+}
+
+/* All headings - Urbanist */
+h1, h2, h3, h4, h5, h6,
+.page-title, .card-title, 
+.transactions-header h2,
+.modal-content h2 {
+    font-family: 'Urbanist', sans-serif;
+}
+
+/* Specific heading weights */
+h1, .page-title {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+h2, .card-title, .modal-content h2 {
+    font-weight: 700;
+}
+
+h3, .budget-title {
+    font-weight: 600;
+}
+
+/* Stats and numbers - Urbanist (looks clean for numbers) */
+.stat-value, .amount, .income-row, .expense-row,
+.budget-amount, #balance, #income, #expenses {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 700;
+}
+
+/* Navigation - Urbanist */
+.nav-item, .user, .logo {
+    font-family: 'Urbanist', sans-serif;
+}
+
+/* Buttons - Urbanist */
+.btn, .add-btn, .action-btn {
+    font-family: 'Urbanist', sans-serif;
+}
+
+/* Table headers - Urbanist */
+th {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+}
+
+/* All other text - Poppins */
+p, .stat-label, .date, .budget-details,
+td, .category-badge, .form-group label,
+.error-message, .category-item,
+input, select, .filter-select, .search-input,
+.radio-group label, #confirm-message {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Light Theme (default) */
+:root {
+    --bg-primary: #f5f5f5;
+    --bg-white: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --border: #dddddd;
+    --sidebar-bg: #0A1A2F;
+    --sidebar-hover: rgba(255,255,255,0.1);
+    --card-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    --table-header: #f8f9fa;
+    --table-border: #eeeeee;
+    --highlight: #fff3cd;
+    --red: #D00D2D;
+    --red-hover: #a00a24;
+    --green: #2ecc71;
+}
+
+/* Dark Theme */
+body.dark {
+    --bg-primary: #1a1a1a;
+    --bg-white: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --border: #404040;
+    --sidebar-bg: #000000;
+    --sidebar-hover: #D00D2D;
+    --card-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    --table-header: #363636;
+    --table-border: #404040;
+    --highlight: #664d00;
+    --red: #D00D2D;
+    --red-hover: #ff1a3d;
+    --green: #2ecc71;
+}
+
+/* Rest of your CSS remains exactly the same */
+.app {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 200px; /* Increased from 80px to accommodate labels */
+    background: var(--sidebar-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 10px;
+    color: white;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    background: var(--red);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px auto;
+    color: white;
+}
+
+.logo svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    fill: none;
+}
+
+.nav-item {
+    width: 100%;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 12px;
+    margin-bottom: 5px;
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.nav-item:hover {
+    background: var(--sidebar-hover);
+    color: white;
+}
+
+.nav-item.active {
+    background: var(--red);
+    color: white;
+}
+
+.nav-item svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.nav-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: inherit;
+    white-space: nowrap;
+}
+
+.theme-toggle {
+    margin-top: auto;
+    margin-bottom: 10px;
+}
+
+.user {
+    width: 40px;
+    height: 40px;
+    background: var(--red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: white;
+    margin: 0 auto; 
+}
+
+/* Main Content */
+.main {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+    background: var(--bg-primary);
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 28px;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+
+.date {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.add-btn {
+    background: var(--red);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+}
+
+.add-btn:hover {
+    background: var(--red-hover);
+}
+
+.add-btn svg {
+    stroke: white;
+}
+
+/* Stats Cards */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: var(--bg-white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+}
+
+.stat-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.stat-value.positive {
+    color: var(--green);
+}
+
+.stat-value.negative {
+    color: var(--red);
+}
+
+/* Budget Bar */
+.budget-section {
+    background: var(--bg-white);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: var(--card-shadow);
+}
+
+.budget-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.budget-title {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.budget-amount {
+    color: var(--red);
+    font-weight: 600;
+}
+
+.progress-bar {
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--red);
+    transition: width 0.3s;
+}
+
+.budget-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+/* Transactions */
+.transactions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.transactions-header h2 {
+    font-size: 18px;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-select, .search-input {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 14px;
+    background: var(--bg-white);
+    color: var(--text-primary);
+}
+
+.search-input:focus, .filter-select:focus {
+    outline: none;
+    border-color: var(--red);
+}
+
+table {
+    width: 100%;
+    background: var(--bg-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+}
+
+th {
+    background: var(--table-header);
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+th:hover {
+    background: var(--red);
+    color: white;
+}
+
+td {
+    padding: 15px;
+    border-top: 1px solid var(--table-border);
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+.income-row {
+    color: var(--green);
+    font-weight: 600;
+}
+
+.expense-row {
+    color: var(--red);
+    font-weight: 600;
+}
+
+.category-badge {
+    background: var(--border);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--text-primary);
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 4px;
+}
+
+.action-btn:hover {
+    color: var(--red);
+}
+
+.action-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+}
+
+.highlight {
+    background: var(--highlight);
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.error-message {
+    color: var(--red);
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--bg-white);
+    width: 400px;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    background: var(--bg-white);
+    color: var(--text-primary);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--red);
+}
+
+.form-group input.invalid {
+    border-color: var(--red);
+}
+
+.form-group input.valid {
+    border-color: var(--green);
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    color: var(--text-primary);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background: var(--red);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--red-hover);
+}
+
+.btn-secondary {
+    background: var(--border);
+    color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+    opacity: 0.8;
+}
+
+.btn-danger {
+    background: var(--red);
+    color: white;
+}
+
+/* Category breakdown */
+#category-breakdown {
+    margin-top: 15px;
+}
+
+.category-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 8px;
+    background: var(--border);
+    border-radius: 6px;
+}
+
+/* Exchange rates */
+.rate-input {
+    padding: 4px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--bg-white);
+    color: var(--text-primary);
+}
+
+/* RESPONSIVE DESIGN - Complete Mobile/Tablet Support */
+
+/* Tablet Landscape (1024px and below) */
+@media screen and (max-width: 1024px) {
+    .stats {
+        gap: 15px;
+    }
+
+    .stat-value {
+        font-size: 24px;
+    }
+
+    .main {
+        padding: 25px;
+    }
+}
+
+/* Tablet Portrait (768px and below) */
+@media screen and (max-width: 768px) {
+    /* Adjust sidebar */
+    .sidebar {
+        width: 70px;
+    }
+
+    .logo {
+        width: 35px;
+        height: 35px;
+    }
+
+    .logo svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .nav-item {
+        width: 45px;
+        height: 45px;
+    }
+
+    .nav-item svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .user {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+
+    /* Main content adjustments */
+    .main {
+        padding: 20px;
+    }
+
+    .header h1 {
+        font-size: 24px;
+    }
+
+    .add-btn {
+        padding: 10px 18px;
+        font-size: 13px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .stat-card:last-child {
+        grid-column: span 2;
+    }
+
+    .stat-value {
+        font-size: 22px;
+    }
+
+    /* Transactions table adjustments */
+    .transactions-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .filters {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .search-input {
+        flex: 1;
+        min-width: 200px;
+    }
+
+    table {
+        font-size: 13px;
+    }
+
+    th, td {
+        padding: 12px 8px;
+    }
+
+    .actions {
+        gap: 4px;
+    }
+
+    .action-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* Mobile Landscape (600px and below) */
+@media screen and (max-width: 600px) {
+    .main {
+        padding: 15px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .add-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .stat-card:last-child {
+        grid-column: span 1;
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-value {
+        font-size: 20px;
+    }
+
+    /* Make table scrollable horizontally */
+    .transactions-header + table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    table {
+        min-width: 600px;
+    }
+
+    th, td {
+        padding: 10px 6px;
+        font-size: 12px;
+    }
+
+    .budget-section {
+        padding: 15px;
+    }
+
+    .budget-header {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .budget-details {
+        flex-direction: column;
+        gap: 5px;
+        text-align: center;
+    }
+}
+
+/* Small Mobile (480px and below) */
+@media screen and (max-width: 480px) {
+    /* Compact sidebar */
+    .sidebar {
+        width: 60px;
+    }
+
+    .logo {
+        width: 30px;
+        height: 30px;
+        margin-bottom: 20px;
+    }
+
+    .logo svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .nav-item {
+        width: 40px;
+        height: 40px;
+    }
+
+    .nav-item svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .user {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .main {
+        padding: 12px;
+    }
+
+    .header h1 {
+        font-size: 20px;
+    }
+
+    .date {
+        font-size: 12px;
+    }
+
+    .filters {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .search-input, .filter-select {
+        width: 100%;
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+
+    .stat-label {
+        font-size: 12px;
+    }
+
+    .stat-value {
+        font-size: 18px;
+    }
+
+    .budget-title, .budget-amount {
+        font-size: 14px;
+    }
+
+    .budget-details span {
+        font-size: 12px;
+    }
+
+    /* Modal adjustments for mobile */
+    .modal-content {
+        width: 90%;
+        margin: 0 15px;
+        padding: 20px;
+    }
+
+    .modal-content h2 {
+        font-size: 18px;
+    }
+
+    .form-group label {
+        font-size: 13px;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    .radio-group {
+        gap: 15px;
+    }
+
+    .radio-group label {
+        font-size: 13px;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .btn {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    /* Settings page adjustments */
+    #settings-page .budget-section {
+        padding: 15px;
+    }
+
+    #settings-page h3 {
+        font-size: 16px;
+    }
+
+    #settings-page .btn-secondary {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    #settings-page div[style*="flex-wrap: wrap"] {
+        flex-direction: column;
+    }
+
+    /* Stats page adjustments */
+    #stats-page .stats {
+        gap: 10px;
+    }
+
+    #stats-page .stat-card {
+        padding: 12px;
+    }
+
+    .category-item {
+        padding: 6px;
+        font-size: 13px;
+    }
+}
+
+/* Very Small Mobile (360px and below) */
+@media screen and (max-width: 360px) {
+    .sidebar {
+        width: 50px;
+    }
+
+    .logo {
+        width: 28px;
+        height: 28px;
+    }
+
+    .nav-item {
+        width: 35px;
+        height: 35px;
+    }
+
+    .nav-item svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .main {
+        padding: 10px;
+    }
+
+    .header h1 {
+        font-size: 18px;
+    }
+
+    .stat-card {
+        padding: 10px;
+    }
+
+    .stat-value {
+        font-size: 16px;
+    }
+
+    .budget-section {
+        padding: 12px;
+    }
+
+    .modal-content {
+        padding: 15px;
+    }
+
+    .form-group {
+        margin-bottom: 12px;
+    }
+}
+
+/* Handle very small screens in landscape orientation */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .sidebar {
+        overflow-y: auto;
+    }
+
+    .main {
+        padding: 10px;
+    }
+
+    .modal-content {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+
+/* Ensure modals are centered and scrollable on small screens */
+@media screen and (max-height: 600px) {
+    .modal-content {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+
+/* Print styles (optional but useful) */
+@media print {
+    .sidebar,
+    .add-btn,
+    .filters,
+    .actions,
+    .theme-toggle {
+        display: none !important;
+    }
+
+    .app {
+        display: block;
+    }
+
+    .main {
+        padding: 0;
+    }
+
+    table {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background: #f0f0f0 !important;
+        color: black !important;
+    }
+
+    td {
+        color: black !important;
+    }
+
+    .income-row, .expense-row {
+        color: black !important;
+    }
+}
+
+/* ============================================
+   STATISTICS PAGE STYLES
+   ============================================ */
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+#stats-page .stat-card {
+    background: var(--bg-white);
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.2s;
+}
+
+#stats-page .stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(208,13,45,0.1);
+}
+
+#stats-page .stat-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#stats-page .stat-value {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.stat-unit {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-left: 4px;
+}
+
+/* Chart Section */
+.chart-section {
+    background: var(--bg-white);
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    box-shadow: var(--card-shadow);
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.chart-header h3 {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    color: var(--text-primary);
+}
+
+.chart-container {
+    height: 200px;
+    position: relative;
+}
+
+/* Bar Chart */
+.bar-chart {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    height: 160px;
+    gap: 8px;
+}
+
+.bar-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.bar {
+    width: 100%;
+    background: linear-gradient(180deg, #D00D2D 0%, #a00a24 100%);
+    border-radius: 8px 8px 4px 4px;
+    min-height: 4px;
+    transition: height 0.3s ease;
+    position: relative;
+}
+
+.bar-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.bar-value {
+    font-size: 11px;
+    color: #D00D2D;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+/* Cap/Target Section */
+.cap-section {
+    background: var(--bg-white);
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+}
+
+.cap-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.cap-header h3 {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    color: var(--text-primary);
+}
+
+.cap-control {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cap-input {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.cap-input label {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.cap-input input {
+    width: 120px;
+    padding: 8px 12px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    background: var(--bg-white);
+    color: var(--text-primary);
+    transition: border-color 0.2s;
+}
+
+.cap-input input:focus {
+    outline: none;
+    border-color: #D00D2D;
+}
+
+.cap-input button {
+    background: #D00D2D;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: 'Urbanist', sans-serif;
+}
+
+.cap-input button:hover {
+    background: #a00a24;
+}
+
+/* Progress Bar */
+.progress-container {
+    margin: 20px 0;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.progress-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.progress-value {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.progress-bar {
+    height: 12px;
+    background: var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #D00D2D, #ff4d6d);
+    border-radius: 20px;
+    transition: width 0.3s ease;
+}
+
+/* ARIA Live Region */
+.aria-live-region {
+    background: var(--bg-primary);
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 20px;
+    border-left: 4px solid #D00D2D;
+}
+
+.live-message {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.live-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #D00D2D;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.live-text {
+    flex: 1;
+    font-size: 16px;
+    color: var(--text-primary);
+}
+
+.live-status {
+    font-size: 14px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+[aria-live="polite"] {
+    animation: gentlePulse 2s infinite;
+}
+
+[aria-live="assertive"] {
+    animation: urgentPulse 1s infinite;
+}
+
+@keyframes gentlePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+@keyframes urgentPulse {
+    0%, 100% { opacity: 1; background: rgba(208,13,45,0.1); }
+    50% { opacity: 0.9; background: rgba(208,13,45,0.2); }
+}
+
+/* Responsive Design for Stats Page */
+@media screen and (max-width: 768px) {
+    .stats-grid {
+        gap: 15px;
+    }
+
+    #stats-page .stat-value {
+        font-size: 28px;
+    }
+
+    .cap-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cap-control {
+        width: 100%;
+    }
+
+    .cap-input {
+        width: 100%;
+    }
+
+    .cap-input input {
+        flex: 1;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .chart-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .bar-label {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #stats-page .stat-card {
+        padding: 20px;
+    }
+
+    #stats-page .stat-value {
+        font-size: 24px;
+    }
+
+    .chart-section,
+    .cap-section {
+        padding: 20px;
+    }
+
+    .bar-chart {
+        height: 140px;
+    }
+
+    .bar-label {
+        transform: rotate(-45deg);
+        margin-top: 15px;
+    }
+
+    .live-message {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .live-status {
+        white-space: normal;
+    }
+
+    .cap-input {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cap-input input,
+    .cap-input button {
+        width: 100%;
+    }
+}
+
+/* Dark mode support for stats page */
+body.dark .bar {
+    background: linear-gradient(180deg, #ff4d6d 0%, #D00D2D 100%);
+}
+
+body.dark .progress-fill {
+    background: linear-gradient(90deg, #ff4d6d, #D00D2D);
+}
+
+body.dark .aria-live-region {
+    background: #363636;
+}
+
+body.dark .bar-value {
+    color: #ff4d6d;
+}
+
+.chart-container {
+    height: 200px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+}
+
+.bar-chart {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    height: 100%;
+    width: 100%;
+    gap: 8px;
+    padding-bottom: 20px;
+}
+
+/* On mobile, make chart collapsible */
+@media screen and (max-width: 600px) {
+    .chart-section {
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        margin-bottom: 15px;
+    }
+    
+    .chart-header {
+        cursor: pointer;
+        padding: 15px;
+        margin-bottom: 0;
+        background: var(--bg-white);
+        border-radius: 12px;
+        user-select: none;
+    }
+    
+    .chart-header h3 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0;
+    }
+    
+    .chart-header h3::after {
+        content: "▼";
+        font-size: 12px;
+        color: var(--red);
+        transition: transform 0.3s;
+    }
+    
+    .chart-header.active h3::after {
+        transform: rotate(180deg);
+    }
+    
+    .chart-container {
+        display: none;
+        padding: 15px;
+        padding-top: 0;
+    }
+    
+    .chart-header.active + .chart-container {
+        display: block;
+    }
+    
+    /* Style for the toggle message */
+    .stats-page .chart-section::before {
+        content: "Tap to show/hide chart";
+        display: block;
+        text-align: center;
+        font-size: 12px;
+        color: var(--red);
+        margin-bottom: 5px;
+    }
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 70px;
+        align-items: center;
+        padding: 20px 5px;
+    }
+    
+    .nav-label {
+        display: none; /* Hide labels on mobile */
+    }
+    
+    .nav-item {
+        width: 50px;
+        padding: 10px;
+        justify-content: center;
+    }
+    
+    .logo {
+        margin-bottom: 20px;
+    }
+}
